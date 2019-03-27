@@ -1,0 +1,16 @@
+# Mac files
+.DS_Store
+
+# Environment variables
+.env
+
+# VS Code
+.vscode
+
+# Node specific
+node_modules
+node_modules_linux
+test.js
+
+# Logs
+logs
