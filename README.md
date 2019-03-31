@@ -169,6 +169,12 @@ When logs are produced related to an API request, it is a good idea to attach a 
 
 Note that the `traceID` fields are optional in the log output and are only present when the log is related to an API call.
 
+This application is set up to automatically log the following information:
+* Application start up messages
+* API request received
+* Data sent with API request
+* API request complete
+
 <a name="input-validation"></a>
 
 #### Input validation
