@@ -145,15 +145,15 @@ Logging is done in this application using the `Winston` module. There are 6 leve
 
 The configuration for the logger is in `config/winston`. The `NODE_ENV` environment variable determines which level and logging configs are used. Note that log level means that logs with the level stated and above are output.
 
-| NODE_ENV    | Log level | Log format                                                                               | Log output |
-| ----------- | --------- | ---------------------------------------------------------------------------------------- | ---------- |
-| debug       | debug     | \<timestamp\> - [\<level\>]: [traceID: \<traceID\>]) \<message\>                         | Console    |
-| debug       | debug     | {traceID: \<traceID\>, timestamp: \<timestamp\>, level: \<level\>, message: \<message\>} | File       |
-| test        | info      | \<timestamp\> - [\<level\>]: [traceID: \<traceID\>]) \<message\>                         | Console    |
-| test        | info      | {traceID: \<traceID\>, timestamp: \<timestamp\>, level: \<level\>, message: \<message\>} | File       |
-| development | info      | \<timestamp\> - [\<level\>]: [traceID: \<traceID\>]) \<message\>                         | Console    |
-| development | info      | {traceID: \<traceID\>, timestamp: \<timestamp\>, level: \<level\>, message: \<message\>} | File       |
-| production  | info      | {traceID: \<traceID\>, timestamp: \<timestamp\>, level: \<level\>, message: \<message\>} | File       |
+| NODE_ENV    | Log level | Log format                                                                                       | Log output |
+| ----------- | --------- | ------------------------------------------------------------------------------------------------ | ---------- |
+| debug       | debug     | \<timestamp\> - [\<level\>]: [traceID: \<traceID\>]) \<message\>                                 | Console    |
+| debug       | debug     | {traceID: \<traceID\>, unixTimestamp: \<unixTimestamp\>, level: \<level\>, message: \<message\>} | File       |
+| test        | info      | \<timestamp\> - [\<level\>]: [traceID: \<traceID\>]) \<message\>                                 | Console    |
+| test        | info      | {traceID: \<traceID\>, unixTimestamp: \<unixTimestamp\>, level: \<level\>, message: \<message\>} | File       |
+| development | info      | \<timestamp\> - [\<level\>]: [traceID: \<traceID\>]) \<message\>                                 | Console    |
+| development | info      | {traceID: \<traceID\>, unixTimestamp: \<unixTimestamp\>, level: \<level\>, message: \<message\>} | File       |
+| production  | info      | {traceID: \<traceID\>, unixTimestamp: \<unixTimestamp\>, level: \<level\>, message: \<message\>} | File       |
 
 To use the logger ensure that you import the `config/winston` default export. You can then create a log by using the log level method and inputting a message.
 
@@ -346,8 +346,9 @@ The endpoints described in the table below are available in this boilerplate app
 
 ### Future improvements
 
-- API versioning
-- API documentation with <a href="http://apidocjs.com/">apidoc</a>
-- Git hook to run prettier
+- [ ] API versioning  
+- [ ] API documentation with Swagger  
+- [ ] Git hook to run Prettier  
+- [ ] Use for Windows and Mac/Linux devs  
 
 ---
