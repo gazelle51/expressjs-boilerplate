@@ -29,7 +29,7 @@ const jsonFormat = winston_1.default.format.printf(({ level, message, timestamp 
     // Formatting of JSON
     return JSON.stringify({
         traceID: traceID,
-        timestamp: timestamp,
+        unixTimestamp: Math.round(new Date(timestamp).getTime() / 1000),
         level: level,
         message: message
     });
