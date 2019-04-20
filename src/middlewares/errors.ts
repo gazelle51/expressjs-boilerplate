@@ -60,7 +60,7 @@ export const errorHandler = (
     // Other errors
 
     // Error properties
-    errCode = err.status || err.code || HttpStatusCode.InternalServerError;
+    errCode = err.status || HttpStatusCode.InternalServerError;
     errError = err.message || "Something went wrong";
   }
 
