@@ -33,6 +33,7 @@ exports.logRequestReceived = (req, res, next) => {
     try {
         // Log request received
         log_1.default.reqReceived(winston_1.default, req);
+        log_1.default.reqData(winston_1.default, req);
         // Pass request to routers
         next();
     }

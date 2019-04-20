@@ -48,7 +48,7 @@ exports.errorHandler = (err, req, res, next) => {
     catch (_a) {
         // Other errors
         // Error properties
-        errCode = err.status || err.code || APIResponse_1.HttpStatusCode.InternalServerError;
+        errCode = err.status || APIResponse_1.HttpStatusCode.InternalServerError;
         errError = err.message || "Something went wrong";
     }
     // Log error
