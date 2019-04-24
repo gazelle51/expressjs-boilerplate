@@ -19,5 +19,7 @@ CMD npm run start
 # Expose the port outside of the container
 EXPOSE 3000
 
-# docker run -it -p 3000:3000 -v /Users/sarahgazelle/Documents/git/gazelle51/expressjs-boilerplate:/app test-bp npm run watch-debug
-# docker run -it -p 3000:3000 -v /Users/sarahgazelle/Documents/git/gazelle51/expressjs-boilerplate:/app test-bp jest
+# docker run --name expressjs -it -p 3000:3000 -v /Users/sarahgazelle/Documents/git/gazelle51/expressjs-boilerplate:/app test-bp
+# docker run --name expressjs_debug -it -p 3000:3000 -v /Users/sarahgazelle/Documents/git/gazelle51/expressjs-boilerplate:/app test-bp npm run watch-debug
+# docker run --name expressjs_dev -it -p 3000:3000 -v /Users/sarahgazelle/Documents/git/gazelle51/expressjs-boilerplate:/app test-bp npm run watch-dev
+# docker run --name expressjs_test -it -p 3000:3000 -v /Users/sarahgazelle/Documents/git/gazelle51/expressjs-boilerplate:/app test-bp jest
