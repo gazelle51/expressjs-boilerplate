@@ -1,7 +1,7 @@
 {
   "name": "app-name",
-  "version": "1.0.0",
-  "description": "App description.",
+  "version": "0.0.1",
+  "description": "App description",
   "private": true,
   "author": "Sarah Gazelle",
   "license": "MIT",
@@ -12,13 +12,16 @@
     "entrypoint": "build/server.js"
   },
   "scripts": {
+    "build": "tsc",
+    "clean-build": "rm -rf build && npm run build",
     "start": "NODE_ENV=\"production\" node $npm_package_config_entrypoint",
+    "dev": "NODE_ENV=\"development\" node $npm_package_config_entrypoint",
     "test": "NODE_ENV=\"test\" jest",
     "watch-ts": "tsc -w",
-    "watch-env-dev": "NODE_ENV=\"development\" nodemon $npm_package_config_entrypoint",
-    "watch-env-debug": "NODE_ENV=\"debug\" nodemon $npm_package_config_entrypoint",
-    "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,magenta.bold\" \"npm run watch-ts\" \"npm run watch-env-dev\"",
-    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,magenta.bold\" \"npm run watch-ts\" \"npm run watch-env-debug\""
+    "watch-js-dev": "NODE_ENV=\"development\" nodemon $npm_package_config_entrypoint",
+    "watch-js-debug": "NODE_ENV=\"debug\" nodemon $npm_package_config_entrypoint",
+    "watch-dev": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,magenta.bold\" \"npm run watch-ts\" \"npm run watch-js-dev\"",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,magenta.bold\" \"npm run watch-ts\" \"npm run watch-js-debug\""
   },
   "nodemonConfig": {
     "env": {
