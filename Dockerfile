@@ -13,8 +13,8 @@ RUN npm install -g jest
 # Copy the files we need to our new Directory
 COPY . /app
 
-# Start the server and transpile src directory to build
-CMD npm run start
+# Build TypeScript and start the server
+CMD npm run clean-build && npm run start
 
 # Expose the port outside of the container
 EXPOSE 3000
