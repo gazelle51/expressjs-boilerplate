@@ -11,7 +11,9 @@ import express from "express";
 // import fileUpload from "express-fileupload";
 import httpContext from "express-http-context";
 import logging from "./middlewares/logging";
+import swaggerUi from "swagger-ui-express";
 import winston from "./config/winston";
+import YAML from "yamljs";
 
 // Import routes
 import indexRouter from "./routes/index";
@@ -56,6 +58,13 @@ app.use(logging.createTraceID);
 
 // Log request received
 app.use(logging.logRequestReceived);
+
+// Swagger UI
+app.use(
+  "/api-docs",
+  swaggerUi.serve,
+  swaggerUi.setup(YAML.load("./swagger.yaml"))
+);
 
 // Routes
 app.use("/", indexRouter);
