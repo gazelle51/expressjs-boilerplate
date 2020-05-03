@@ -16,6 +16,7 @@
     "clean-build": "rm -rf build && npm run build",
     "start": "NODE_ENV=\"production\" node $npm_package_config_entrypoint",
     "dev": "NODE_ENV=\"development\" node $npm_package_config_entrypoint",
+    "debug": "NODE_ENV=\"debug\" node $npm_package_config_entrypoint",
     "test": "NODE_ENV=\"test\" jest",
     "watch-ts": "tsc -w",
     "watch-js-dev": "NODE_ENV=\"development\" nodemon $npm_package_config_entrypoint",

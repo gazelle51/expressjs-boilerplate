@@ -114,15 +114,19 @@ exampleFunctions.addNumbers(1, 4);
 
 The `package.json` file includes some custom scripts that you will need to use when developing and running the application. The following scripts are defined:
 
-- `start`: start the application with environment variable `NODE_ENV="production"`
-- `test`: run the `jest` test suite with environment variable `NODE_ENV="test"`
-- `watch-ts`: watch for any changes in the TypeScript files, if there are changes compile to JavaScript
-- `watch-env-dev`: start the application with environment variable `NODE_ENV="development"` and watch for any changes in the JavaScript files, if there are changes restart the application
-- `watch-env-debug`: start the application with environment variable `NODE_ENV="debug"` and watch for any changes in the JavaScript files, if there are changes restart the application
-- `watch`: start the application with environment variable `NODE_ENV="development"` and watch for any changes in both the TypeScript and JavaScript files, if there are changes recompile and restart the application
-- `watch-debug`: start the application with environment variable `NODE_ENV="debug"` and watch for any changes in both the TypeScript and JavaScript files, if there are changes recompile and restart the application
+- `build`: build the TypeScript files in the `src` folder
+- `clean-build`: delete the current build in the `build` folder then build the TypeScript files in the `src` folder
+- `start`: start the application with environment variable `NODE_ENV=production`
+- `dev`: start the application with environment variable `NODE_ENV=development`
+- `dev`: start the application with environment variable `NODE_ENV=debug`
+- `test`: run the `jest` test suite with environment variable `NODE_ENV=test`
+- `watch-ts`: watch for any changes in the TypeScript files, if there are changes build the TypeScript files in the `src` folder
+- `watch-js-dev`: start the application with environment variable `NODE_ENV=development` and watch for any changes in the JavaScript files, if there are changes restart the application
+- `watch-js-debug`: start the application with environment variable `NODE_ENV=debug` and watch for any changes in the JavaScript files, if there are changes restart the application
+- `watch-dev`: start the application with environment variable `NODE_ENV=development` and watch for any changes in both the TypeScript and JavaScript files, if there are changes build the TypeScript files in the `src` folder and restart the application
+- `watch-debug`: start the application with environment variable `NODE_ENV=debug` and watch for any changes in both the TypeScript and JavaScript files, if there are changes build the TypeScript files in the `src` folder and restart the application
 
-The scripts you will use most often when developing are `watch` and `watch-debug`.
+The scripts you will use most often when developing are `watch-dev` and `watch-debug`.
 
 <a name="loading-environment-variables"></a>
 
@@ -170,10 +174,11 @@ When logs are produced related to an API request, it is a good idea to attach a 
 Note that the `traceID` fields are optional in the log output and are only present when the log is related to an API call.
 
 This application is set up to automatically log the following information:
-* Application start up messages
-* API request received
-* Data sent with API request
-* API request complete
+
+- Application start up messages
+- API request received
+- Data sent with API request
+- API request complete
 
 <a name="input-validation"></a>
 
@@ -191,7 +196,7 @@ export const exampleAddXY = [
     .withMessage("must be a number"),
   param("y")
     .isNumeric()
-    .withMessage("must be a number")
+    .withMessage("must be a number"),
 ];
 
 /* routes/example */
@@ -305,7 +310,7 @@ npm run watch-debug
 Running the application in development mode will use info level logging and set `NODE_ENV = "development"`. It was also watch for changes to both TypeScript and Javascript, when there are any changes the app will be recompiled and restarted. To start the application in development mode run the code below.
 
 ```bash
-npm run watch
+npm run watch-dev
 ```
 
 <a name="production-mode"></a>
@@ -346,9 +351,9 @@ The endpoints described in the table below are available in this boilerplate app
 
 ### Future improvements
 
-- [ ] API versioning  
-- [ ] API documentation with Swagger  
-- [ ] Git hook to run Prettier  
-- [ ] Use for Windows and Mac/Linux devs  
+- [ ] API versioning
+- [ ] API documentation with Swagger
+- [ ] Git hook to run Prettier
+- [ ] Use for Windows and Mac/Linux devs
 
 ---
