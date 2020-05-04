@@ -42,7 +42,6 @@ export const logRequestReceived = (
   try {
     // Log request received
     log.reqReceived(winston, req);
-    log.reqData(winston, req);
 
     // Pass request to routers
     next();
@@ -53,5 +52,5 @@ export const logRequestReceived = (
 
 export default {
   createTraceID,
-  logRequestReceived
+  logRequestReceived,
 };
