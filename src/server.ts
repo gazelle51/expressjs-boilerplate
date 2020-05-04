@@ -11,6 +11,7 @@ import express from "express";
 // import fileUpload from "express-fileupload";
 import httpContext from "express-http-context";
 import logging from "./middlewares/logging";
+import responseTime from "response-time";
 import swaggerUi from "swagger-ui-express";
 import winston from "./config/winston";
 import YAML from "yamljs";
