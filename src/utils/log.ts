@@ -6,7 +6,7 @@ import { Logger } from "winston";
  * @param winston - Winston logger
  * @param req - Express request
  */
-export const reqReceived = (winston: Logger, req: Request): void => {
+function reqReceived(winston: Logger, req: Request): void {
   let files: any[] = [];
 
   // List of files
@@ -31,7 +31,7 @@ export const reqReceived = (winston: Logger, req: Request): void => {
     }" "${req.get("Referrer")}" "${req.get("User-Agent")}"`,
     { queryParams: req.query, body: req.body, files }
   );
-};
+}
 
 /**
  * Log when an API request is received.
@@ -39,11 +39,7 @@ export const reqReceived = (winston: Logger, req: Request): void => {
  * @param req - Express request
  * @param res - Express response
  */
-export const reqComplete = (
-  winston: Logger,
-  req: Request,
-  res: Response
-): void => {
+function reqComplete(winston: Logger, req: Request, res: Response): void {
   // Log request complete
   winston.info(
     `Request complete in ${res.get("x-response-time")} - ${
@@ -52,6 +48,6 @@ export const reqComplete = (
       "content-length"
     )} "${req.get("Referrer")}" "${req.get("User-Agent")}"`
   );
-};
+}
 
 export default { reqReceived, reqComplete };

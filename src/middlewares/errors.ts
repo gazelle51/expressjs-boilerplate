@@ -12,7 +12,7 @@ import {
  * @param req - Express request
  * @param res - Express response
  */
-export const catch404 = (req: Request, res: Response): void => {
+function catch404(req: Request, res: Response): void {
   // Log error
   winston.error(`${HttpStatusCode.NotFound} - Not Found`);
 
@@ -21,7 +21,7 @@ export const catch404 = (req: Request, res: Response): void => {
 
   // Log request complete
   log.reqComplete(winston, req, res);
-};
+}
 
 /**
  * Catch and handle errors.
@@ -30,12 +30,12 @@ export const catch404 = (req: Request, res: Response): void => {
  * @param res - Express response
  * @param next - Express next function
  */
-export const errorHandler = (
+function errorHandler(
   err: any,
   req: Request,
   res: Response,
   next: NextFunction
-): void => {
+): void {
   let errCode: HttpStatusCode;
   let errError: string;
   let output: APIResponseError;
@@ -76,7 +76,7 @@ export const errorHandler = (
 
   // Log request complete
   log.reqComplete(winston, req, res);
-};
+}
 
 export default {
   catch404,

@@ -8,7 +8,7 @@ import {
 /**
  * Add 2 randomly generated numbers.
  */
-export const addRandomNumbers = (): AddTwoNumbers => {
+function addRandomNumbers(): AddTwoNumbers {
   let output: AddTwoNumbers;
   let random: RandomNumbers;
 
@@ -27,12 +27,12 @@ export const addRandomNumbers = (): AddTwoNumbers => {
   } catch (err) {
     throw new Error(`error adding random numbers: ${err.message}`);
   }
-};
+}
 
 /**
  * Subtract 2 randomly generated numbers.
  */
-export const subtractRandomNumbers = (): SubtractTwoNumbers => {
+function subtractRandomNumbers(): SubtractTwoNumbers {
   let output: SubtractTwoNumbers;
   let random: RandomNumbers;
 
@@ -51,14 +51,14 @@ export const subtractRandomNumbers = (): SubtractTwoNumbers => {
   } catch (err) {
     throw new Error(`error subtracting random numbers: ${err.message}`);
   }
-};
+}
 
 /**
  * Add 2 numbers.
  * @param x - First number to add
  * @param y - Second number to add
  */
-export const addNumbers = (x: number, y: number): AddTwoNumbers => {
+function addNumbers(x: number, y: number): AddTwoNumbers {
   let output: AddTwoNumbers;
 
   try {
@@ -74,14 +74,14 @@ export const addNumbers = (x: number, y: number): AddTwoNumbers => {
   } catch (err) {
     throw new Error(`error adding numbers: ${err.message}`);
   }
-};
+}
 
 /**
  * Subtract 2 numbers.
  * @param x - Number to be subtracted from
  * @param y - Number to subtract
  */
-export const subtractNumbers = (x: number, y: number): SubtractTwoNumbers => {
+function subtractNumbers(x: number, y: number): SubtractTwoNumbers {
   let output: SubtractTwoNumbers;
 
   try {
@@ -97,12 +97,12 @@ export const subtractNumbers = (x: number, y: number): SubtractTwoNumbers => {
   } catch (err) {
     throw new Error(`error subtracting numbers: ${err.message}`);
   }
-};
+}
 
 /**
  * Generate 2 numbers.
  */
-let randomNumbers = (): RandomNumbers => {
+function randomNumbers(): RandomNumbers {
   let output: RandomNumbers;
   let x: number;
   let y: number;
@@ -122,7 +122,7 @@ let randomNumbers = (): RandomNumbers => {
   } catch (err) {
     throw new Error(`error generating random numbers: ${err.message}`);
   }
-};
+}
 
 export default {
   addRandomNumbers,
