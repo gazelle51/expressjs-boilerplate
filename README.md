@@ -25,7 +25,6 @@ Microservice project with ExpressJS on NodeJS
   - [Debug mode](#debug-mode)
   - [Development mode](#development-mode)
   - [Production mode](#production-mode)
-- [Endpoints](#endpoints)
 - [Important](#important)
 - [Future improvements](#future-improvements)
 
@@ -322,23 +321,6 @@ Running the application in production mode will use info level logging and set `
 ```bash
 npm start
 ```
-
-<a name="endpoints"></a>
-
-### Endpoints
-
-The endpoints described in the table below are available in this boilerplate application.
-
-| Endpoint                          | Method | Description                            | Params                                                    | Body | Response Type |
-| :-------------------------------- | :----- | :------------------------------------- | :-------------------------------------------------------- | :--- | :------------ |
-| `/`                               | GET    | API landing page                       | N/A                                                       | N/A  | JSON          |
-| `api/v1`                          | GET    | API version 1 landing page             | N/A                                                       | N/A  | JSON          |
-| `api/v1/example/add/random`       | GET    | Add 2 randomly generated numbers       | N/A                                                       | N/A  | JSON          |
-| `api/v1/example/subtract/random`  | GET    | Subtract 2 randomly generated numbers  | N/A                                                       | N/A  | JSON          |
-| `api/v1/example/add/{x}/{y}`      | GET    | Add 2 numbers                          | x: first number to add <br>y: second number to add        | N/A  | JSON          |
-| `api/v1/example/subtract/{x}/{y}` | GET    | Subtract 2 numbers                     | x: number to be subtracted from <br>y: number to subtract | N/A  | JSON          |
-| `api/v1/example/logs`             | GET    | Examples of different logging levels   | N/A                                                       | N/A  | JSON          |
-| `api/v1/example/error`            | GET    | Example of an error in the application | N/A                                                       | N/A  | JSON          |
 
 <a name="important"></a>
 
