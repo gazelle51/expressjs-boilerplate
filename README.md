@@ -1,30 +1,30 @@
 ## Express Boilerplate <!-- omit in toc -->
 
-Microservice project with ExpressJS on NodeJS
+API with ExpressJS on NodeJS
 
 ![Platform](https://img.shields.io/badge/platform-NODE-lightgrey.svg?style=flat)
 
 ### Table of Contents <!-- omit in toc -->
 
 - [Summary](#summary)
+- [Requirements](#requirements)
+- [Getting Started](#getting-started)
+  - [Installing the application](#installing-the-application)
+  - [Testing the application](#testing-the-application)
+  - [Running the application in watch mode](#running-the-application-in-watch-mode)
+  - [Running the application](#running-the-application)
 - [Functionality](#functionality)
   - [ExpressJS application](#expressjs-application)
   - [TypeScript](#typescript)
   - [Example routes and functions](#example-routes-and-functions)
-  - [Test, debug, dev and prod NodeJS scripts](#test-debug-dev-and-prod-nodejs-scripts)
+  - [NPM scripts](#npm-scripts)
   - [Loading environment variables](#loading-environment-variables)
   - [Logging and request tracing](#logging-and-request-tracing)
   - [Input validation](#input-validation)
   - [Error handling](#error-handling)
   - [Testing](#testing)
   - [CORS](#cors)
-- [Requirements](#requirements)
-- [Run](#run)
-  - [Installing the application](#installing-the-application)
-  - [Test mode](#test-mode)
-  - [Debug mode](#debug-mode)
-  - [Development mode](#development-mode)
-  - [Production mode](#production-mode)
+  - [OpenAPI Documentation](#openapi-documentation)
 - [Important](#important)
 - [Future improvements](#future-improvements)
 
@@ -32,24 +32,94 @@ Microservice project with ExpressJS on NodeJS
 
 ### Summary
 
-A microservices is an individual component of an application that follows the microservice architecture - an architectural style that structures an application as a collection of loosely coupled services, which implement business capabilities. The microservice exposes a RESTful API.
-
-<a name="functionality"></a>
-
-### Functionality
-
-The project contains the functionality listed below.
+This repository contains boilerplate code for a RESTful API built in NodeJS using the Express framework. The project contains the functionality listed below.
 
 - ExpressJS application
 - TypeScript
 - Example middlewares, routes and functions
-- Test, debug, dev and prod NodeJS scripts
+- NPM scripts
 - Loading environment variables
 - Logging and request tracing
 - Input validation
 - Error handling
 - Testing
 - CORS
+- OpenAPI documentation
+
+These functionalities will be explained in detail in this document.
+
+<a name="requirements"></a>
+
+### Requirements
+
+#### Local Development Tools Setup <!-- omit in toc -->
+
+- Install a code editor such as <a href="https://code.visualstudio.com/download">VS Code</a>
+- Install the latest [NodeJS](https://nodejs.org/en/download/) 6+ LTS version
+
+<a name="getting-started"></a>
+
+### Getting Started
+
+<a name="installing-the-application"></a>
+
+#### Installing the application
+
+To install the application navigate to the app root directory in the command line. Run the following code:
+
+```bash
+npm install
+```
+
+This will install the application dependencies in the local node_modules folder. Once complete, the application can be run using one of the node scripts. Your application will run at: <a href="localhost:3000/api-docs">localhost:\<PORT\>/api-docs</a>.
+
+You should also update the information listed below:
+
+- `package.json`: name
+- `package.json`: version
+- `package.json`: description
+- `package.json`: private
+- `package.json`: author
+- `package.json`: license
+- CORS configuration
+- `.env` file if environment variables are needed
+- `.gitignore` if storing code in a git repository
+- Body parsers used by application
+- `manifest.yml`: update everything here if you plan on deploying to Cloud Foundry or similar
+
+<a name="testing-the-application"></a>
+
+#### Testing the application
+
+To run the application's tests, run the code below. Ensure all tests are passing before trying to use the application.
+
+```bash
+npm run test
+```
+
+<a name="running-the-application-in-watch-mode"></a>
+
+#### Running the application in watch mode
+
+Running the application in watch mode will initially compile the TypeScript into JavaScript and start the JavaScript application. It will then monitor for changes to both the TypeScript and Javascript, when there are any changes the app will be recompiled and restarted. To start the application in watch mode run the code below.
+
+```bash
+npm run watch
+```
+
+<a name="running-the-application"></a>
+
+#### Running the application
+
+To run the application normally, ensure the TypeScript has already been built. To start the application run the code below.
+
+```bash
+npm start
+```
+
+<a name="functionality"></a>
+
+### Functionality
 
 <a name="expressjs-application"></a>
 
@@ -57,13 +127,13 @@ The project contains the functionality listed below.
 
 Express.js, or simply Express, is a web application framework for Node.js, released as free and open-source software under the MIT License. It is designed for building web applications and APIs.
 
-The Express application is set up in the `server` file. You will notice that when running, the application will be made available on the `PORT` number defined in the environment variables or port `3000`. The app also has a number of body parsers which can be enabled in the `Set up Express framework` section, currently only the JSON body parser is turned on.
+The Express application is set up in the `server` file. You will notice that when running, the application will be made available on the port number defined in the `PORT` environment variable or port `3000` by default. The app also has a number of body parsers which can be enabled in the "Set up Express framework" section, currently only the JSON body parser is turned on.
 
 <a name="typescript"></a>
 
 #### TypeScript
 
-TypeScript is basically just JavaScript plus some additional features. TypeScript allows you to assign variable types while developing your code, and will check those variable types while you develop. When developing in TypeScript, all your code is stored in `.ts` files, you then need to compile this code and it will be converted to JavaScript (`.js`). For this project, all TypeScript is found in `src/` and all JavaScript is stored in `build/`. The compiled JavaScript is used when running the app.
+TypeScript is basically just JavaScript plus some additional features. TypeScript allows you to assign variable types while developing your code, and will check those variable types while you develop. When developing in TypeScript, all your code is stored in `.ts` files, you then need to compile this code and it will be converted to JavaScript (`.js`). For this project, all TypeScript is found in `src/` and all JavaScript is found in `build/` (the TypeScript must be built in order to see this). The compiled JavaScript is used when running the app.
 
 Check out this <a href="https://www.typescriptlang.org/docs/handbook/TypeScript-in-5-minutes.html">TypeScript in 5 minutes tutorial</a> for a quick overview of how it works.
 
@@ -80,11 +150,11 @@ When you further develop this application, ensure you **always** develop in Type
 
 #### Example routes and functions
 
-This project includes some examples of API routes and custom functions that are used by the routes. These examples show you how you can structure your own routes and functions.
+This project includes some examples of API routes and custom functions that are used by those routes. These examples show you how you can structure your own routes and functions.
 
-The example routes can be found in `routes/` and the example functions can be found in `services/`, there are also other functions in `utils/` but these are used by the app as utilities. Remember when you create a route, you need to tell your Express app to use it, this is done in the `Set up Express framework` section of the `server` file.
+The example routes can be found in `routes/` and the example functions can be found in `services/`, there are also other functions in `utils/` but these are used by the app as utilities. Remember when you create a route, you need to tell your Express app to use it, this is done in the "Set up Express framework" section of the `server` file.
 
-When you write your own functions, each function must be exported (using named and default exports) so that it can be used by other parts of the application. You can have multiple named exports (`export ...`) in a file. To import these in another file import the specific exports you want in an object.
+When you write your own functions, each function must be exported (using named or default exports) so that it can be used by other parts of the application. You can have multiple named exports (`export ...`) in a file. To import these in another file import the specific exports you want in an object.
 
 ```JavaScript
 // Import specific named exports from services/exampleFunctions
@@ -99,6 +169,8 @@ import * as exampleFunctions from "../services/exampleFunctions";
 exampleFunctions.addNumbers(1, 4);
 ```
 
+<sup>Note that named exports have **not** been set up in this code repository.</sup>
+
 On the other hand, you can only have one default export (`export default ...`) per file. This export can be a function, a class, an object or anything else. Importing the default export in another file will import whatever you have exported as a variable name that you choose.
 
 ```JavaScript
@@ -107,37 +179,32 @@ import exampleFunctions from "../services/exampleFunctions";
 exampleFunctions.addNumbers(1, 4);
 ```
 
-<a name="test-debug-dev-and-prod-nodejs-scripts"></a>
+<a name="npm-scripts"></a>
 
-#### Test, debug, dev and prod NodeJS scripts
+#### NPM scripts
 
 The `package.json` file includes some custom scripts that you will need to use when developing and running the application. The following scripts are defined:
 
 - `build`: build the TypeScript files in the `src` folder
 - `clean-build`: delete the current build in the `build` folder then build the TypeScript files in the `src` folder
-- `start`: start the application with environment variable `NODE_ENV=production`
-- `dev`: start the application with environment variable `NODE_ENV=development`
-- `dev`: start the application with environment variable `NODE_ENV=debug`
-- `test`: run the `jest` test suite with environment variable `NODE_ENV=test`
+- `start`: start the application by running the pre-built JavaScript
+- `test`: run the mocha test suite on the pre-built JavaScript
+- `build-test`: build the TypeScript files in the `src` folder then run the mocha test suite
 - `watch-ts`: watch for any changes in the TypeScript files, if there are changes build the TypeScript files in the `src` folder
-- `watch-js-dev`: start the application with environment variable `NODE_ENV=development` and watch for any changes in the JavaScript files, if there are changes restart the application
-- `watch-js-debug`: start the application with environment variable `NODE_ENV=debug` and watch for any changes in the JavaScript files, if there are changes restart the application
-- `watch-dev`: start the application with environment variable `NODE_ENV=development` and watch for any changes in both the TypeScript and JavaScript files, if there are changes build the TypeScript files in the `src` folder and restart the application
-- `watch-debug`: start the application with environment variable `NODE_ENV=debug` and watch for any changes in both the TypeScript and JavaScript files, if there are changes build the TypeScript files in the `src` folder and restart the application
-
-The scripts you will use most often when developing are `watch-dev` and `watch-debug`.
+- `watch-js`: start the application and watch for any changes in the JavaScript files, if there are changes restart the application
+- `watch`: start the application and watch for any changes in both the TypeScript and JavaScript files, if there are changes build the TypeScript files in the `src` folder and restart the application
 
 <a name="loading-environment-variables"></a>
 
 #### Loading environment variables
 
-When running the application in debug or development mode the environment variables are loaded from a local `.env` file stored in the app root directory. The `.env` file should not be hosted anywhere publically (as it contains sensitive information) and hence an example is not included in this repository. If you are running the application in production mode the environment variables will not be loaded from an `.env` file as it is expected they are already exposed in the environment. The `.env` file is also not loaded in test mode as the tests should not rely on external dependencies. If you need to use an environment variable in test mode you can use the `rewire` module to temporarily create it within the test scope.
+When running the application environment variables are loaded from a local `.env` file stored in the app root directory. If this file does not exist, then nothing will be loaded. A sample env file has been included in this repository called `sample.env`, it contains all the environment variables required by the application. To use this file it must be renamed to `.env`. Note that the `.env` file should not be hosted anywhere publically (as it contains sensitive information) so do not commit it to the repository.
 
 <a name="logging-and-request-tracing"></a>
 
 #### Logging and request tracing
 
-Logging is done in this application using the `Winston` module. There are 6 levels of logs:
+Logging is done in this application using the Winston module. There are 6 levels of logs:
 
 - 0: error
 - 1: warn
@@ -146,17 +213,13 @@ Logging is done in this application using the `Winston` module. There are 6 leve
 - 4: debug
 - 5: silly
 
-The configuration for the logger is in `config/winston`. The `NODE_ENV` environment variable determines which level and logging configs are used. Note that log level means that logs with the level stated and above are output.
+The configuration for the logger is in `config/winston` where there are currently 3 defined log transports. These are explained in the table below. Note that log level means that logs with the level stated and above only are output.
 
-| NODE_ENV    | Log level | Log format                                                                                       | Log output |
-| ----------- | --------- | ------------------------------------------------------------------------------------------------ | ---------- |
-| debug       | debug     | \<timestamp\> - [\<level\>]: [traceID: \<traceID\>]) \<message\>                                 | Console    |
-| debug       | debug     | {traceID: \<traceID\>, unixTimestamp: \<unixTimestamp\>, level: \<level\>, message: \<message\>} | File       |
-| test        | info      | \<timestamp\> - [\<level\>]: [traceID: \<traceID\>]) \<message\>                                 | Console    |
-| test        | info      | {traceID: \<traceID\>, unixTimestamp: \<unixTimestamp\>, level: \<level\>, message: \<message\>} | File       |
-| development | info      | \<timestamp\> - [\<level\>]: [traceID: \<traceID\>]) \<message\>                                 | Console    |
-| development | info      | {traceID: \<traceID\>, unixTimestamp: \<unixTimestamp\>, level: \<level\>, message: \<message\>} | File       |
-| production  | info      | {traceID: \<traceID\>, unixTimestamp: \<unixTimestamp\>, level: \<level\>, message: \<message\>} | File       |
+| #   | Level                            | Structure                                                                                                         | Format                |
+| --- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------- |
+| 1   | LOG_LEVEL (environment variable) | \<timestamp\> [\<logLevel\>] \<message\>                                                                          | Console               |
+| 2   | info                             | { traceID: \<traceID\>, timestamp: \<timestamp\>, level: \<level\>, message: \<message\>, ...\<other metadata\> } | File (logs/app.log)   |
+| 3   | debug                            | { traceID: \<traceID\>, timestamp: \<timestamp\>, level: \<level\>, message: \<message\>, ...\<other metadata\> } | File (logs/debug.log) |
 
 To use the logger ensure that you import the `config/winston` default export. You can then create a log by using the log level method and inputting a message.
 
@@ -168,16 +231,22 @@ import winston from "./config/winston";
 winston.info("Hello world!");
 ```
 
+You can also input other metadata that you want to appear in the file logs (this data does not display in the console logs).
+
+```javascript
+// Create a warning log with metadata
+winston.warn("This is a warning...", { data: [1, 2, 3] });
+```
+
 When logs are produced related to an API request, it is a good idea to attach a trace ID to the request and use this in the logs. This allows you to be aware of which logs are related to the request and can be useful for troubleshooting purposes. The trace ID is created using the `middlewares/logging` middleware and attached to the request using the `express-http-context` module. This module allows you to access the trace ID from anywhere in the application that doesn't have access to the Express `req` object.
 
 Note that the `traceID` fields are optional in the log output and are only present when the log is related to an API call.
 
 This application is set up to automatically log the following information:
 
-- Application start up messages
-- API request received
-- Data sent with API request
-- API request complete
+- Application start up
+- API request received (including the corresponding data)
+- API request complete (including response time)
 
 <a name="input-validation"></a>
 
@@ -231,9 +300,7 @@ This application contains two error handling middlewares and they are defined in
 
 #### Testing
 
-Tests should be written for custom functions that do not rely on external dependencies. This application uses <a href="https://jestjs.io/">jest</a> for the test framework. All test scripts are in the `tests/` folder and can be run using the `npm run test` command.
-
-If you're test requires an environment variable or an external dependency result use the `rewire` module to temporarily override a variable within the test scope. You can read the <a href="https://www.npmjs.com/package/rewire">documentation</a> for examples.
+Tests should be written for custom functions that do not rely on external dependencies. This application uses a combination of <a href="https://mochajs.org/">Mocha</a>, <a href="https://sinonjs.org/">Sinon</a> and <a href="https://www.chaijs.com/">Chai</a> for the test framework. All test scripts are in the `tests/` folder and can be run using the `npm run test` (if the TypeScript is already built) or `npm run build-test` commands.
 
 <a name="cors"></a>
 
@@ -243,84 +310,11 @@ A request for a resource (like an image or a font) outside of the origin is know
 
 In other words, CORS allows applications that are not on the domain of your application server to access your application. This application has CORS enabled.
 
-<a name="requirements"></a>
+<a name="openapi-documentation"></a>
 
-### Requirements
+#### OpenAPI Documentation
 
-#### Local Development Tools Setup <!-- omit in toc -->
-
-- Install a code editor such as <a href="https://code.visualstudio.com/download">VS Code</a>
-- Install the latest [NodeJS](https://nodejs.org/en/download/) 6+ LTS version
-
-<a name="run"></a>
-
-### Run
-
-<a name="installing-the-application"></a>
-
-#### Installing the application
-
-To install the application navigate to the app root directory in the command line. Run the following code:
-
-```bash
-npm install
-```
-
-This will install the application dependencies in the local node_modules folder. Once complete, the application can be run using one of the node scripts. Your application will run at: `localhost:<PORT>/`.
-
-You should also update the information listed below:
-
-- `package.json`: name
-- `package.json`: version
-- `package.json`: description
-- `package.json`: private
-- `package.json`: author
-- `package.json`: license
-- CORS configuration
-- `.env` file if environment variables are needed
-- `.gitignore` if storing code in a git repository
-- Body parsers used by application
-- `manifest.yml`: update everything here if you plan on deploying to Cloud Foundry or similar
-
-<a name="test-mode"></a>
-
-#### Test mode
-
-To run the application's tests, run the code below. If all the tests return `PASS` then the tests were successful.
-
-```bash
-npm run test
-```
-
-<a name="debug-mode"></a>
-
-#### Debug mode
-
-Running the application in debug mode will use debug level logging and set `NODE_ENV = "debug"`. It was also watch for changes to both TypeScript and Javascript, when there are any changes the app will be recompiled and restarted. To start the application in debug mode run the code below.
-
-```bash
-npm run watch-debug
-```
-
-<a name="development-mode"></a>
-
-#### Development mode
-
-Running the application in development mode will use info level logging and set `NODE_ENV = "development"`. It was also watch for changes to both TypeScript and Javascript, when there are any changes the app will be recompiled and restarted. To start the application in development mode run the code below.
-
-```bash
-npm run watch-dev
-```
-
-<a name="production-mode"></a>
-
-#### Production mode
-
-Running the application in production mode will use info level logging and set `NODE_ENV = "production"`. To start the application in production mode run the code below.
-
-```bash
-npm start
-```
+OpenAPI Specification (formerly Swagger Specification) is an API description format for REST APIs. It allows you to describe things like available endpoints, operations on each endpoint, inputs and outputs, authentication methods and more. A YAML file has been included in this repository (`swagger.yaml`) as an example. This YAML file is referred to from the `server` file so that the user can access the documentation when the application is running. To view the OpenAPI documentation, start the application (`npm start`) and navigate to <a href="localhost:3000/api-docs">localhost:\<PORT\>/api-docs</a>.
 
 <a name="important"></a>
 
