@@ -1,50 +1,55 @@
-import rewire from "rewire";
-const exampleFunctions = rewire("../services/exampleFunctions");
+import chai from "chai";
+import sinon from "sinon";
 
-/**
- * Test addRandomNumbers.
- */
-test("Add 3 and 6", async () => {
-  // Rewire exampleFunctions.randomNumbers function so that the numbers we add are fixed
-  exampleFunctions.__set__("randomNumbers", () => {
-    return {
-      x: 3,
-      y: 6,
-    };
+// Chai set up
+const expect = chai.expect;
+
+// Module to text
+import exampleFunctions from "../services/exampleFunctions";
+
+describe("services::exampleFunctions::addRandomNumbers", () => {
+  it("should add 3 and 6", () => {
+    // Stubs
+    let random = sinon.stub(Math, "random");
+    random
+      .onCall(0)
+      .returns(0.3)
+      .onCall(1)
+      .returns(0.6)
+      .returns(0);
+
+    expect(exampleFunctions.addRandomNumbers().add).to.eql(9);
   });
-
-  // Run test
-  expect(exampleFunctions.addRandomNumbers().add).toEqual(9);
 });
 
-/**
- * Test subtractRandomNumbers.
- */
-test("Subtract 5 from -9", async () => {
-  // Rewire exampleFunctions.randomNumbers function so that the numbers we add are fixed
-  exampleFunctions.__set__("randomNumbers", () => {
-    return {
-      x: -9,
-      y: 5,
-    };
+describe("services::exampleFunctions::subtractRandomNumbers", () => {
+  it("should subtract 5 from -9", () => {
+    // Stubs
+    let random = sinon.stub(Math, "random");
+    random
+      .onCall(0)
+      .returns(-0.9)
+      .onCall(1)
+      .returns(0.5)
+      .returns(0);
+
+    expect(exampleFunctions.subtractRandomNumbers().subtract).to.eql(-14);
   });
-
-  // Run test
-  expect(exampleFunctions.subtractRandomNumbers().subtract).toEqual(-14);
 });
 
-/**
- * Test addNumbers.
- */
-test("Add 3 and 6", async () => {
-  // Run test
-  expect(exampleFunctions.addNumbers(3, 6).add).toEqual(9);
+describe("services::exampleFunctions::addNumbers", () => {
+  it("should add 3 and 6", () => {
+    expect(exampleFunctions.addNumbers(3, 6).add).to.eql(9);
+  });
 });
 
-/**
- * Test subtractRandomNumbers.
- */
-test("Subtract 5 from -9", async () => {
-  // Run test
-  expect(exampleFunctions.subtractNumbers(-9, 5).subtract).toEqual(-14);
+describe("services::exampleFunctions::subtractNumbers", () => {
+  it("should subtract 5 from -9", () => {
+    expect(exampleFunctions.subtractNumbers(-9, 5).subtract).to.eql(-14);
+  });
+});
+
+afterEach(function() {
+  // Restore sinon
+  sinon.restore();
 });
