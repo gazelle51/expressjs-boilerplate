@@ -1,0 +1,294 @@
+openapi: 3.0.0
+
+info:
+  title: Sample API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.0.1
+
+servers:
+  - url: http://localhost:3000
+    description: Optional server description, e.g. Local development server
+  - url: http://staging-api.example.com
+    description: Optional server description, e.g. Internal staging server for testing
+
+tags:
+  - name: default
+  - name: example
+    description: Example endpoints.
+
+paths:
+  /:
+    get:
+      operationId: getIndex
+      summary: Returns a message the user is on the home page
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        "200":
+          description: A message string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseOK"
+              example:
+                status: OK
+                code: 200
+                data:
+                  message: The is an Express API for app name. Current version is v1.
+        "500":
+          description: A message string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseError"
+              example:
+                status: error
+                code: 500
+                error: Unexpected error
+
+  /api/v1:
+    get:
+      operationId: getIndexV1
+      summary: Returns a message the user is on the v1 home page
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        "200":
+          description: A message string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseOK"
+              example:
+                status: OK
+                code: 200
+                data:
+                  message: This is the API v1 landing page.
+        "500":
+          description: A message string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseError"
+              example:
+                status: error
+                code: 500
+                error: Unexpected error
+
+  /api/v1/example/add/random:
+    get:
+      operationId: getExampleAddRandom
+      tags: [example]
+      summary: Add 2 randomly generated numbers
+      description: Add 2 randomly generated numbers between 0 and 10.
+      responses:
+        "200":
+          description: The original numbers and the result of the addition.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseOK"
+              example:
+                status: OK
+                code: 200
+                data:
+                  x: 1.2
+                  y: 3.4
+                  add: 4.6
+        "500":
+          description: A message string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseError"
+              example:
+                status: error
+                code: 500
+                error: Unexpected error
+
+  /api/v1/example/add/{x}/{y}:
+    get:
+      operationId: getExampleAddXY
+      tags: [example]
+      summary: Add 2 numbers
+      description: Add 2 numbers specified in the URL.
+      parameters:
+        - in: path
+          name: x
+          schema:
+            type: integer
+          required: true
+          description: First number to add
+        - in: path
+          name: y
+          schema:
+            type: integer
+          required: true
+          description: Second number to add
+      responses:
+        "200":
+          description: The original numbers and the result of the addition.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseOK"
+              example:
+                status: OK
+                code: 200
+                data:
+                  x: 1.2
+                  y: 3.4
+                  add: 4.6
+        "500":
+          description: A message string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseError"
+              example:
+                status: error
+                code: 500
+                error: Unexpected error
+
+  /api/v1/example/subtract/random:
+    get:
+      operationId: getExampleSubtractRandom
+      tags: [example]
+      summary: Subtract 2 randomly generated numbers
+      description: Subtract 2 randomly generated numbers between 0 and 10.
+      responses:
+        "200":
+          description: The original numbers and the result of the subtraction.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseOK"
+              example:
+                status: OK
+                code: 200
+                data:
+                  x: 1.2
+                  y: 3.4
+                  subtract: -2.2
+        "500":
+          description: A message string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseError"
+              example:
+                status: error
+                code: 500
+                error: Unexpected error
+
+  /api/v1/example/subtract/{x}/{y}:
+    get:
+      operationId: getExampleSubtractXY
+      tags: [example]
+      summary: Subtract 2 numbers
+      description: Subtract 2 numbers specified in the URL.
+      parameters:
+        - in: path
+          name: x
+          schema:
+            type: integer
+          required: true
+          description: First number to subtract
+        - in: path
+          name: y
+          schema:
+            type: integer
+          required: true
+          description: Second number to subtract
+      responses:
+        "200":
+          description: The original numbers and the result of the subtraction.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseOK"
+              example:
+                status: OK
+                code: 200
+                data:
+                  x: 1.2
+                  y: 3.4
+                  subtract: -2.2
+        "500":
+          description: A message string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseError"
+              example:
+                status: error
+                code: 500
+                error: Unexpected error
+
+  /api/v1/example/logs:
+    get:
+      operationId: getExampleLogs
+      tags: [example]
+      summary: Examples of different logging levels
+      description: Examples of different logging levels. This endpoint will show you how different logs behave in the backend and the console.
+      responses:
+        "200":
+          description: A message.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseOK"
+              example:
+                status: OK
+                code: 200
+                data:
+                  message: Example logs in console and logs/app.log
+        "500":
+          description: A message string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseError"
+              example:
+                status: error
+                code: 500
+                error: Unexpected error
+
+  /api/v1/example/error:
+    get:
+      operationId: getExampleError
+      tags: [example]
+      summary: Example of an error in the application
+      description: Example of an error in the application. This endpoint will show you how an error will behave in the backend.
+      responses:
+        "500":
+          description: A message string
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ApiResponseError"
+              example:
+                status: error
+                code: 500
+                error: Sample error!
+
+components:
+  schemas:
+    ApiResponseOK:
+      description: Return schema when the API response is successful.
+      type: object
+      properties:
+        status:
+          type: string
+        code:
+          type: integer
+        data:
+          type: object
+    ApiResponseError:
+      description: Return schema when the API response is an error.
+      type: object
+      properties:
+        status:
+          type: string
+        code:
+          type: integer
+        error:
+          type: string
