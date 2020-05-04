@@ -26,7 +26,6 @@ API with ExpressJS on NodeJS
   - [CORS](#cors)
   - [OpenAPI Documentation](#openapi-documentation)
 - [Important](#important)
-- [Future improvements](#future-improvements)
 
 <a name="summary"></a>
 
@@ -322,12 +321,5 @@ OpenAPI Specification (formerly Swagger Specification) is an API description for
 
 - This application was built in NodeJS 10.15.0
 - API key functionality has not been built in this boilerplate
-
-<a name="future-improvements"></a>
-
-### Future improvements
-
-- [ ] API versioning
-- [ ] Git hook to run Prettier
 
 ---
