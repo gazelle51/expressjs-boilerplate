@@ -25,7 +25,7 @@ import indexRouter from "./routes/index";
 import exampleRouter from "./routes/example";
 
 // Log starting application
-winston.info(`Starting application in ${process.env.NODE_ENV} mode`);
+winston.info(`Starting application in ${process.env.ENVIRONMENT} mode`);
 winston.info(`Application root directory is ${appRoot.toString()}`);
 
 /****************************/
