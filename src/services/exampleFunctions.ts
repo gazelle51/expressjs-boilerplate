@@ -2,12 +2,11 @@ import winston from "../config/winston";
 import {
   RandomNumbers,
   AddTwoNumbers,
-  SubtractTwoNumbers
+  SubtractTwoNumbers,
 } from "../config/models/Example";
 
 /**
  * Add 2 randomly generated numbers.
- * @function
  */
 export const addRandomNumbers = (): AddTwoNumbers => {
   let output: AddTwoNumbers;
@@ -21,7 +20,7 @@ export const addRandomNumbers = (): AddTwoNumbers => {
     output = {
       x: random.x,
       y: random.y,
-      add: random.x + random.y
+      add: random.x + random.y,
     };
 
     return output;
@@ -32,7 +31,6 @@ export const addRandomNumbers = (): AddTwoNumbers => {
 
 /**
  * Subtract 2 randomly generated numbers.
- * @function
  */
 export const subtractRandomNumbers = (): SubtractTwoNumbers => {
   let output: SubtractTwoNumbers;
@@ -46,7 +44,7 @@ export const subtractRandomNumbers = (): SubtractTwoNumbers => {
     output = {
       x: random.x,
       y: random.y,
-      subtract: random.x - random.y
+      subtract: random.x - random.y,
     };
 
     return output;
@@ -57,9 +55,8 @@ export const subtractRandomNumbers = (): SubtractTwoNumbers => {
 
 /**
  * Add 2 numbers.
- * @function
- * @param x First number to add
- * @param y Second number to add
+ * @param x - First number to add
+ * @param y - Second number to add
  */
 export const addNumbers = (x: number, y: number): AddTwoNumbers => {
   let output: AddTwoNumbers;
@@ -70,7 +67,7 @@ export const addNumbers = (x: number, y: number): AddTwoNumbers => {
     output = {
       x: x,
       y: y,
-      add: x + y
+      add: x + y,
     };
 
     return output;
@@ -81,9 +78,8 @@ export const addNumbers = (x: number, y: number): AddTwoNumbers => {
 
 /**
  * Subtract 2 numbers.
- * @function
- * @param x Number to be subtracted from
- * @param y Number to subtract
+ * @param x - Number to be subtracted from
+ * @param y - Number to subtract
  */
 export const subtractNumbers = (x: number, y: number): SubtractTwoNumbers => {
   let output: SubtractTwoNumbers;
@@ -94,7 +90,7 @@ export const subtractNumbers = (x: number, y: number): SubtractTwoNumbers => {
     output = {
       x: x,
       y: y,
-      subtract: x - y
+      subtract: x - y,
     };
 
     return output;
@@ -105,7 +101,6 @@ export const subtractNumbers = (x: number, y: number): SubtractTwoNumbers => {
 
 /**
  * Generate 2 numbers.
- * @function
  */
 let randomNumbers = (): RandomNumbers => {
   let output: RandomNumbers;
@@ -120,7 +115,7 @@ let randomNumbers = (): RandomNumbers => {
 
     output = {
       x: x,
-      y: y
+      y: y,
     };
 
     return output;
@@ -133,5 +128,5 @@ export default {
   addRandomNumbers,
   subtractRandomNumbers,
   addNumbers,
-  subtractNumbers
+  subtractNumbers,
 };

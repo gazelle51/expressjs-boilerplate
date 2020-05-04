@@ -6,10 +6,9 @@ import { Request, Response, NextFunction } from "express";
 
 /**
  * Create a trace ID for the request.
- * @function
- * @param req Express request
- * @param res Express response
- * @param next Express next function
+ * @param req - Express request
+ * @param res - Express response
+ * @param next - Express next function
  */
 export const createTraceID = (
   req: Request,
@@ -29,10 +28,9 @@ export const createTraceID = (
 
 /**
  * Log when a request has been received.
- * @function
- * @param req Express request
- * @param res Express response
- * @param next Express next function
+ * @param req - Express request
+ * @param res - Express response
+ * @param next - Express next function
  */
 export const logRequestReceived = (
   req: Request,

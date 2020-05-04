@@ -4,14 +4,13 @@ import { Request, Response, NextFunction } from "express";
 import {
   APIResponseError,
   HttpStatusCode,
-  Status
+  Status,
 } from "../config/models/APIResponse";
 
 /**
  * Catch requests which do not have an existing route and send 404 status.
- * @function
- * @param req Express request
- * @param res Express response
+ * @param req - Express request
+ * @param res - Express response
  */
 export const catch404 = (req: Request, res: Response): void => {
   // Log error
@@ -26,11 +25,10 @@ export const catch404 = (req: Request, res: Response): void => {
 
 /**
  * Catch and handle errors.
- * @function
- * @param err Error that has been thrown
- * @param req Express request
- * @param res Express response
- * @param next Express next function
+ * @param err - Error that has been thrown
+ * @param req - Express request
+ * @param res - Express response
+ * @param next - Express next function
  */
 export const errorHandler = (
   err: any,
@@ -71,7 +69,7 @@ export const errorHandler = (
   output = {
     status: Status.error,
     code: errCode,
-    error: errError
+    error: errError,
   };
   res.status(errCode);
   res.json(output);
@@ -82,5 +80,5 @@ export const errorHandler = (
 
 export default {
   catch404,
-  errorHandler
+  errorHandler,
 };

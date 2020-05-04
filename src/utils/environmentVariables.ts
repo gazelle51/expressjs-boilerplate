@@ -5,7 +5,6 @@ import winston from "../config/winston";
 
 /**
  * Load environment variables for dev environment.
- * @function
  */
 export const loadEnvironmentVariables = (): null => {
   try {

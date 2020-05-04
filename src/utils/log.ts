@@ -3,9 +3,8 @@ import { Logger } from "winston";
 
 /**
  * Log when an API request is received.
- * @function
- * @param winston Winston logger
- * @param req Express request
+ * @param winston - Winston logger
+ * @param req - Express request
  */
 export const reqReceived = (winston: Logger, req: Request): void => {
   let files: any[] = [];
@@ -36,10 +35,9 @@ export const reqReceived = (winston: Logger, req: Request): void => {
 
 /**
  * Log when an API request is received.
- * @function
- * @param winston Winston logger
- * @param req Express request
- * @param res Express response
+ * @param winston - Winston logger
+ * @param req - Express request
+ * @param res - Express response
  */
 export const reqComplete = (
   winston: Logger,

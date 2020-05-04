@@ -9,7 +9,7 @@ test("Add 3 and 6", async () => {
   exampleFunctions.__set__("randomNumbers", () => {
     return {
       x: 3,
-      y: 6
+      y: 6,
     };
   });
 
@@ -20,13 +20,12 @@ test("Add 3 and 6", async () => {
 /**
  * Test subtractRandomNumbers.
  */
-
 test("Subtract 5 from -9", async () => {
   // Rewire exampleFunctions.randomNumbers function so that the numbers we add are fixed
   exampleFunctions.__set__("randomNumbers", () => {
     return {
       x: -9,
-      y: 5
+      y: 5,
     };
   });
 
@@ -37,7 +36,6 @@ test("Subtract 5 from -9", async () => {
 /**
  * Test addNumbers.
  */
-
 test("Add 3 and 6", async () => {
   // Run test
   expect(exampleFunctions.addNumbers(3, 6).add).toEqual(9);
@@ -46,7 +44,6 @@ test("Add 3 and 6", async () => {
 /**
  * Test subtractRandomNumbers.
  */
-
 test("Subtract 5 from -9", async () => {
   // Run test
   expect(exampleFunctions.subtractNumbers(-9, 5).subtract).toEqual(-14);
