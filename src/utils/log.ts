@@ -69,11 +69,11 @@ export const reqComplete = (
 ): void => {
   // Log request complete
   winston.info(
-    `Request complete - ${req.connection.remoteAddress} "${req.method} ${
-      req.originalUrl
-    }" ${res.statusCode} ${res.get("content-length")} "${req.get(
-      "Referrer"
-    )}" "${req.get("User-Agent")}"`
+    `Request complete in ${res.get("x-response-time")} - ${
+      req.connection.remoteAddress
+    } "${req.method} ${req.originalUrl}" ${res.statusCode} ${res.get(
+      "content-length"
+    )} "${req.get("Referrer")}" "${req.get("User-Agent")}"`
   );
 };
 

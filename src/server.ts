@@ -40,6 +40,9 @@ if (
 const app = express();
 const port = parseInt(process.env.PORT) || 3000;
 
+// Add X-Response-Time header
+app.use(responseTime());
+
 // CORS
 app.use(cors());
 app.options("*", cors());
