@@ -2,10 +2,14 @@
 /* Set up environment */
 /**********************/
 
+// Load .env file
+import appRoot from "app-root-path";
+import path from "path";
+require("dotenv").config({ path: path.join(appRoot.toString(), ".env") });
+
 // Import modules
 import bodyParser from "body-parser";
 import cors from "cors";
-import envVars from "./utils/environmentVariables";
 import errors from "./middlewares/errors";
 import express from "express";
 // import fileUpload from "express-fileupload";
@@ -22,15 +26,7 @@ import exampleRouter from "./routes/example";
 
 // Log starting application
 winston.info(`Starting application in ${process.env.NODE_ENV} mode`);
-
-// Load environment variables in dev or debug environment
-if (
-  process.env.NODE_ENV === "development" ||
-  process.env.NODE_ENV === "debug"
-) {
-  envVars.loadEnvironmentVariables();
-  winston.info("Local environment variables successfully loaded");
-}
+winston.info(`Application root directory is ${appRoot.toString()}`);
 
 /****************************/
 /* Set up Express framework */
