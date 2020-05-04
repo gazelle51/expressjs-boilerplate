@@ -352,8 +352,6 @@ The endpoints described in the table below are available in this boilerplate app
 ### Future improvements
 
 - [ ] API versioning
-- [ ] API documentation with Swagger
 - [ ] Git hook to run Prettier
-- [ ] Use for Windows and Mac/Linux devs
 
 ---
