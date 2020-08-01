@@ -324,7 +324,7 @@ OpenAPI Specification (formerly Swagger Specification) is an API description for
 
 ### To Do
 
-[] Attach trace ID when logging received request instead of calling another middleware
-[] Use `express-winston` for logging complete requests
+[ ] Attach trace ID when logging received request instead of calling another middleware 
+[ ] Use `express-winston` for logging complete requests
 
 ---
