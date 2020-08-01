@@ -322,4 +322,9 @@ OpenAPI Specification (formerly Swagger Specification) is an API description for
 - This application was built in NodeJS 10.15.0
 - API key functionality has not been built in this boilerplate
 
+### To Do
+
+[] Attach trace ID when logging received request instead of calling another middleware
+[] Use `express-winston` for logging complete requests
+
 ---
